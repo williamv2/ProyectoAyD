@@ -14,6 +14,7 @@
     <link type="text/css" rel="stylesheet" href="css/header-v8.min.css">
     <link type="text/css" rel="stylesheet" href="css/header.min.css">
     <link rel="stylesheet" type="text/css" href="css/ufps.css">
+    <link rel="stylesheet" type="text/css" href="css/ufps.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +24,7 @@
     <![endif]-->
   </head>
   <body>
-
+    
   	<div class="wrapper">
   	
   		<div class="header-v6 header-white-transparent header-sticky">
@@ -67,14 +68,14 @@
       			<li class="dropdown" id="menuLogin">
             	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
             	<div class="dropdown-menu" style="padding:17px;">
-             		<form>
+             		<form action="./php/login.php" method="POST">
 					 <div class="form-group">
 					    <label for="username"><span class="glyphicon glyphicon-lock"></span> Usuario:</label>
-					    <input type="username" class="form-control" id="username" placeholder="Usuario">
+					    <input type="username" class="form-control" id="username" name="username" placeholder="Usuario">
 					  </div>
 					  <div class="form-group">
 					    <label for="pwd"><span class="glyphicon glyphicon-tag"></span> Password:</label>
-					    <input type="password" class="form-control" id="pwd" placeholder="Password">
+					    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
 					  </div>
 					  <div class="checkbox">
 					    <label><input type="checkbox"><span class="glyphicon glyphicon-check"></span> Recordarme</label>
@@ -101,12 +102,12 @@
         	<div class="col-md-4">
           		<h2>Deportes</h2>
           		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          		<p><a class="btn btn-default" href="./deportes.html" role="button">Ver Detalles &raquo;</a></p>
+          		<p><a class="btn btn-default" href="./deportes.php" role="button">Ver Detalles &raquo;</a></p>
         	</div>
         	<div class="col-md-4">
           		<h2>Equipos</h2>
           		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          		<p><a class="btn btn-default" href="./deportes.html" role="button">Ver Detalles &raquo;</a></p>
+          		<p><a class="btn btn-default" href="./deportes.php" role="button">Ver Detalles &raquo;</a></p>
         	</div>
 
   		</div>	
@@ -114,17 +115,20 @@
   	
       <hr>
 
-      <footer>
-        <p>&copy; 2016 Company, Inc.</p>
-      </footer>
+      <div class="ufps-footer-light">
+        <h3 style="text-align: center;">Universidad Francisco de Paula Santander</h3>
+          <p style="text-align: center;">Programa Ingeniería de Sistemas</p>
+          <p style="text-align: center;">Desarrollado por: Franklin Vasquez</p>
+      </div> 
     </div> <!-- /container -->	
     
 
 
-    </div>
+  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/ufps.min.js"></script>
   </body>
 </html>
