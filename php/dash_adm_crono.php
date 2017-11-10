@@ -43,8 +43,8 @@
 		                Dashboard Administrador
 		             </div>
 		             <div class="ufps-navbar-left">
-		                 <a href="#" class="ufps-navbar-btn">Inicio</a>
-		                 <a href="./dash_adm_crono.php" class="ufps-navbar-btn">Cronograma</a>
+		                 <a href="./dash_adm.php" class="ufps-navbar-btn">Inicio</a>
+		                 <a href="#" class="ufps-navbar-btn">Cronograma</a>
 		                 <a href="" class="ufps-navbar-btn">Deportes</a>
 		                 <a href="" class="ufps-navbar-btn">Partidos</a>
 		             </div>
@@ -66,12 +66,19 @@
        <div class="ufps-row">
         		<div class="ufps-col-mobile-6 ufps-col-tablet-3">
 					<div class="ufps-accordion">
-					    <button class="ufps-btn-accordion">Inicio</button>
 					   
-					    <button class="ufps-btn-accordion">Delegados</button>
+					    <button class="ufps-btn-accordion">Cronograma</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Listar Delegados</a></li>
+					    		<li><a role="button">Crear Cronogrma</a></li>
+					    		<li><a role="button">Programar Fases</a></li>
+					    	</ul>
+					        
+					    </div>
+					    <button class="ufps-btn-accordion">Arbitro</button>
+					    <div class="ufps-accordion-panel">
+					    	<ul class="nav nav-sidebar">
+					    		<li><a role="button">Asignar Arbitro</a></li>
 					    	</ul>
 					        
 					    </div>
@@ -81,39 +88,13 @@
 		 		<div class="ufps-col-mobile-6 ufps-col-tablet-9">
 		 			
 		 			<section>
-                		<h1 class="page-header">Dashboard</h1>
+                		<h1 class="page-header">Cronograma</h1>
                 		<p>
-                    	A continuación se presentan la cantidad de integrantes inscritos por cada deporte, los deportes escojidos y delegados a cargo.
+                    	A continuación se muestran los cronogramas creados con las fechas definidas y los deportes que se realizan.
                 		</p>
 
             		</section>
-            		<section>
-            			
-            			<h1 class="page-header">Fechas de Partidos</h1>
-            			<p>
-                    	A continuación se presentan las fechas de los partidos acorde al cronograma.
-                		</p>
-                		<table class="ufps-table ufps-text-left">
-						    <thead>
-						        <th>No.</th>
-						        <th>Deporte</th>
-						        <th>Fecha</th>
-						        <th>Equipo Visitante</th>
-						        <th>Equipo Local</th>
-						        <th>Hora</th>
-						    </thead>
-						    <tr>
-						        <td>1</td>
-						        <td>Futbol</td>
-						        <td>12-11-2017</td>
-						        <td>Java</td>
-						        <td>NULL</td>
-						        <td>4:00 pm</td>
-						    </tr>
-						   
-						</table>
-
-            		</section>
+            		
 
 		 		</div>
 		</div>

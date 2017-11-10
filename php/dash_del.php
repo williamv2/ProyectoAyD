@@ -32,24 +32,21 @@
 
   		?>
     
-		<div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menu">
-		       
+		 <div class="ufps-navbar ufps-navbar-fixed ufps-navbar-light" id="menu">
+		         <div class="ufps-container-fluid">
 		             <div class="ufps-navbar-brand">
 		                 <div class="ufps-btn-menu" onclick="toggleMenu('menu')">
 		                     <div class="ufps-btn-menu-bar"> </div>
 		                     <div class="ufps-btn-menu-bar"> </div>
 		                     <div class="ufps-btn-menu-bar"> </div>
 		                </div>
-		                Dashboard Administrador
+		                Dashboard Delegado
 		             </div>
 		             <div class="ufps-navbar-left">
-		                 <a href="#" class="ufps-navbar-btn">Inicio</a>
-		                 <a href="./dash_adm_crono.php" class="ufps-navbar-btn">Cronograma</a>
-		                 <a href="" class="ufps-navbar-btn">Deportes</a>
-		                 <a href="" class="ufps-navbar-btn">Partidos</a>
+		                 <a href="" class="ufps-navbar-btn" style="display: none;">Salir</a>
 		             </div>
 		             <div class="ufps-navbar-right">
-		             	<a href="" class="ufps-navbar-btn"><span class="glyphicon glyphicon-user"></span><?php echo $nombre;  ?></a>
+		             	<a href="" class="ufps-navbar-btn"><?php echo $nombre;  ?></a>
 		                <a href="./log-out.php" class="ufps-navbar-btn"><span class="glyphicon glyphicon-log-out"></span>Salir</a>
 		             </div>
 		             <div class="ufps-navbar-right">
@@ -58,71 +55,11 @@
 		                     <img src="../img/logo_ufps_inverted.png" alt="Logo UFPS">
 		                 </div>
 		             </div>
-		       
-	
-   		</div>
 
-   <div class="container-fluid ufps-fix-navbar-fixed">
-       <div class="ufps-row">
-        		<div class="ufps-col-mobile-6 ufps-col-tablet-3">
-					<div class="ufps-accordion">
-					    <button class="ufps-btn-accordion">Inicio</button>
-					   
-					    <button class="ufps-btn-accordion">Delegados</button>
-					    <div class="ufps-accordion-panel">
-					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Listar Delegados</a></li>
-					    	</ul>
-					        
-					    </div>
-					    
-					</div>         
-		 		</div>
-		 		<div class="ufps-col-mobile-6 ufps-col-tablet-9">
-		 			
-		 			<section>
-                		<h1 class="page-header">Dashboard</h1>
-                		<p>
-                    	A continuación se presentan la cantidad de integrantes inscritos por cada deporte, los deportes escojidos y delegados a cargo.
-                		</p>
-
-            		</section>
-            		<section>
-            			
-            			<h1 class="page-header">Fechas de Partidos</h1>
-            			<p>
-                    	A continuación se presentan las fechas de los partidos acorde al cronograma.
-                		</p>
-                		<table class="ufps-table ufps-text-left">
-						    <thead>
-						        <th>No.</th>
-						        <th>Deporte</th>
-						        <th>Fecha</th>
-						        <th>Equipo Visitante</th>
-						        <th>Equipo Local</th>
-						        <th>Hora</th>
-						    </thead>
-						    <tr>
-						        <td>1</td>
-						        <td>Futbol</td>
-						        <td>12-11-2017</td>
-						        <td>Java</td>
-						        <td>NULL</td>
-						        <td>4:00 pm</td>
-						    </tr>
-						   
-						</table>
-
-            		</section>
-
-		 		</div>
-		</div>
-		 
-    </div>
-
-	
-
-		 
+		         </div>
+		 </div>
+        	
+    
 
 
   

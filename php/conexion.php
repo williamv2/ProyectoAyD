@@ -33,7 +33,7 @@ class conexion{
 		$this->usuario = $user;
 		$this->clave = $pass;
 
-		$query = "SELECT * FROM usuario WHERE codigo ='".$this->usuario."'AND clave = '".$this->clave."'";
+		$query = "SELECT * FROM usuario INNER JOIN deportista ON deportista.codigo = usuario.codigo WHERE usuario.codigo ='".$this->usuario."'AND usuario.clave ='".$this->clave."'";
 
 		$consulta= $this->conexion->query($query);
 
@@ -42,17 +42,18 @@ class conexion{
 		if($row = mysqli_fetch_array($consulta)){
 
 			session_start();
-			$_session['user']= $row['codigo'];
-			$_session['pass']= $row['clave'];
-			$_session['tipo']= $row['tipo'];
+			$_SESSION['user']= $row['codigo'];
+			$_SESSION['pass']= $row['clave'];
+			$_SESSION['tipo']= $row['tipo'];
+			$_SESSION['nombre']= $row['nombre'];
 
-			if($_session['tipo']=='A'){
+			if($_SESSION['tipo']=='A'){
 
 			echo '<script>alert("Bienvenido Administrador")</script>';
 			echo '<script>window.location="./dash_adm.php";</script>';
 
 			}
-			else if ($_session['tipo']=='D') {
+			else if ($_SESSION['tipo']=='D') {
 			
 			echo '<script>alert("Bienvenido Delegado")</script>';
 			echo '<script>window.location="./dash_del.php";</script>';
@@ -61,11 +62,11 @@ class conexion{
 
 						
 		}
-		else{
+		/*else{
 
 			echo '<script>alert("Usuario o contraseña incorrectos.")</script>';
 			echo '<script>window.location="../index.html";</script>';
-		}
+		}*/
 
 
 	}	
