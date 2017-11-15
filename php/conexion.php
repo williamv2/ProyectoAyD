@@ -62,11 +62,11 @@ class conexion{
 
 						
 		}
-		/*else{
+		else{
 
 			echo '<script>alert("Usuario o contraseña incorrectos.")</script>';
 			echo '<script>window.location="../index.html";</script>';
-		}*/
+		}
 
 
 	}	

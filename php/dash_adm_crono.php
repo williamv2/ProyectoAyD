@@ -28,7 +28,18 @@
 
   		session_start();
 
-  		$nombre = $_SESSION['nombre'];
+  		if(isset($_SESSION['user'])){
+
+  			$nombre = $_SESSION['nombre'];
+
+            echo "";
+
+        }
+        else{
+
+            header("location:../index.html");
+        }
+
 
   		?>
     
@@ -70,7 +81,7 @@
 					    <button class="ufps-btn-accordion">Cronograma</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Crear Cronogrma</a></li>
+					    		<li><a role="button">Crear Cronograma</a></li>
 					    		<li><a role="button">Programar Fases</a></li>
 					    	</ul>
 					        
