@@ -87,8 +87,4 @@ class jornada
 
 }
 
-$jornada = new jornada("2","2017","08/11/2017","14/11/2017","Jornada Deportiva Ingenieria de Sistemas");
-
-echo "Objeto jornada: ".$jornada->getDescripcion(); 
-
 ?>

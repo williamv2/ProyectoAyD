@@ -153,7 +153,10 @@ class ConexionMysql
 		
 		return $id;
 	}
+
 }
+
+
 
 ?>
 	

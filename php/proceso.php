@@ -42,5 +42,6 @@ if($row = $resul){
 			echo '<script>window.location="../index.html";</script>';
 		}
 	
+	$con->cerrar();
 	
 ?>

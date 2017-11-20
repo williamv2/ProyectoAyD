@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../css/ufps.css">
     <link rel="stylesheet" type="text/css" href="../css/ufps.min.css">
 
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -81,15 +82,16 @@
 					    <button class="ufps-btn-accordion">Cronograma</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Crear Cronograma</a></li>
-					    		<li><a role="button">Programar Fases</a></li>
+					    		<li><a role="button" id="crono">Cronogramas</a></li>
+					    		<li><a role="button" id="crearcrono">Crear Cronograma</a></li>
+					    		<li><a role="button" id="progfases">Programar Fases</a></li>
 					    	</ul>
 					        
 					    </div>
 					    <button class="ufps-btn-accordion">Arbitro</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Asignar Arbitro</a></li>
+					    		<li><a role="button" id="asigarbitro">Asignar Arbitro</a></li>
 					    	</ul>
 					        
 					    </div>
@@ -98,12 +100,61 @@
 		 		</div>
 		 		<div class="ufps-col-mobile-6 ufps-col-tablet-9">
 		 			
-		 			<section>
+		 			<section id="cronoini">
                 		<h1 class="page-header">Cronograma</h1>
                 		<p>
                     	A continuación se muestran los cronogramas creados con las fechas definidas y los deportes que se realizan.
                 		</p>
 
+            		</section>
+
+            		<section id="cronoregistro" style="display: none;">
+            			<h1 class="page-header">Crear Cronograma</h1>
+            			<br>
+            		<form method="POST" action="./registrarcrono.php" class="from-group">
+            			<div class="from-group">
+	                    <label> Semestre:</label>
+	                    <select class="form-control" type="number" id="sem" name="sem" required="true">
+	                    	<option value="1">Primer Semestre</option>
+	                    	<option value="2">Segundo Semestre</option>
+	                    </select>
+	                    </div>
+	                    <br>
+	                    <div class="from-group">
+	                    <label>Año: </label>
+	                    <select class="form-control" id="año" name="año" required="true">
+	                    	<?php
+	                    		$a=1980;
+	                    		for ($i=0; $i <50 ; $i++) { 
+	                    		 
+	                    		 $a++;	
+	                    		  	                       			
+	                       		?>	
+	                       		<option value="<?php echo $a ?>"><?php echo $a; ?></option>
+	                       		<?php
+	                    		}
+
+	                    	?>
+	                    </select>
+	                    </div>
+	                    <br>
+	                    <div class="from-group">
+	                    <label>Fecha Inicio:</label>	
+	                    <input type="date" id="fechini" name="fechini" required="true" class="form-control">
+	                    </div>
+	                    <br>
+	                    <div class="from-group">
+	                    <label>Fecha Fin:</label>	
+	                    <input type="date" id="fechfin" name="fechfin" required="true" class="form-control">
+	                    </div>
+	                    <br>
+	                    <div class="from-group">
+	                    <label>Descripcion:</label>	
+	                    <textarea id="descrip" rows="3" cols="100" name="descrip" class="form-control"></textarea>
+	                    </div>
+	                    <br>
+	                    <input type="submit" name="crcrono" class="ufps-btn" value="Crear Cronograma">
+                	</form>
             		</section>
             		
 
@@ -123,5 +174,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/ufps.min.js"></script>
+    <script src="../js/main_crono.js"></script>
   </body>
 </html>

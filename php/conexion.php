@@ -69,6 +69,12 @@ class conexion{
 		}
 
 
+	}
+
+	public function insertar($string){
+
+
+		return mysqli_query($this->conexion,$string);
 	}	
 }
 ?>
