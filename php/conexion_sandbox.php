@@ -3,11 +3,11 @@
 class conexion{
 
 	private $conexion;
-	private $host_db = "localhost";
-	private $user_db = "root";
-	private $pass_db = "";
-	private $db_master = "jornadas_deportivas";
-	private $tbl_name = "usuario";
+	private $host_db = "sandbox2.ufps.edu.co";
+	private $user_db = "ufps_95";
+	private $pass_db = "ufps_11";
+	private $db_master = "ufps_95";
+	//private $tbl_name = "usuario";
 	private $usuario;
 	private $clave;
 	public static $_singleton;//variable estatica para realizar llamados fuera de la clase

@@ -1,13 +1,16 @@
 <?php
 
-include('ConexionMysql.php');
+include('conexion_sandbox.php');
 
 $usuario = $_POST['username'];
 $clave = $_POST['pwd'];
 
-$con = new ConexionMysql;
+$con = new conexion;
 
-$query = "SELECT * FROM usuario INNER JOIN deportista ON deportista.codigo = usuario.codigo WHERE usuario.codigo ='".$usuario."'AND usuario.clave ='".$clave."'";
+$con->login($usuario,$clave);
+$con->cerrar();
+
+/*$query = "SELECT * FROM usuario INNER JOIN deportista ON deportista.codigo = usuario.codigo WHERE usuario.codigo ='".$usuario."'AND usuario.clave ='".$clave."'";
 
 $con->consulta($query);
 $resul = $con->datosArray();
@@ -43,5 +46,5 @@ if($row = $resul){
 		}
 	
 	$con->cerrar();
-	
+*/	
 ?>

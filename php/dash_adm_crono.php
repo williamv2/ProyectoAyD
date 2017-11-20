@@ -111,7 +111,7 @@
             		<section id="cronoregistro" style="display: none;">
             			<h1 class="page-header">Crear Cronograma</h1>
             			<br>
-            		<form method="POST" action="./registrarcrono.php" class="from-group">
+            		<form method="POST" action="./registrocrono_sandbox.php" class="from-group">
             			<div class="from-group">
 	                    <label> Semestre:</label>
 	                    <select class="form-control" type="number" id="sem" name="sem" required="true">

@@ -8,18 +8,18 @@ class jornada
 
 	//private $idJornada;
 	private $semestre;
-	private $año;
+	private $ano;
 	private $fechIni;
 	private $fechFin;
 	private $descripcion;
 
 
 	
-	function __construct($sem,$año,$fechini,$fechfin,$descrip){
+	function __construct($sem,$ano,$fechini,$fechfin,$descrip){
 
 		//$this->$idJornada = $idjornada;
 		$this->semestre = $sem;
-		$this->año = $año;
+		$this->ano = $ano;
 		$this->fechIni = $fechini;
 		$this->fechFin = $fechfin;
 		$this->descripcion = $descrip;
@@ -45,14 +45,14 @@ class jornada
 		$this->semestre = $sem;
 	}
 
-	public function getAño(){
+	public function getAno(){
 
-		return $this->año;
+		return $this->ano;
 	}
 
-	public function setAño($año){
+	public function setAno($ano){
 
-		$this->año = $año;
+		$this->ano = $ano;
 	}
 
 	public function getFechainicio(){
