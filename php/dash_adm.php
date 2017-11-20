@@ -77,12 +77,19 @@
        <div class="ufps-row">
         		<div class="ufps-col-mobile-6 ufps-col-tablet-3">
 					<div class="ufps-accordion">
-					    <button class="ufps-btn-accordion">Inicio</button>
+					    <button class="ufps-btn-accordion" id="inicio">Inicio</button>
 					   
 					    <button class="ufps-btn-accordion">Delegados</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Listar Delegados</a></li>
+					    		<li><a role="button" id="listdeg">Listar Delegados</a></li>
+					    	</ul>
+					        
+					    </div>
+					    <button class="ufps-btn-accordion">Equipos</button>
+					    <div class="ufps-accordion-panel">
+					    	<ul class="nav nav-sidebar">
+					    		<li><a role="button" id="listEq">Listar Equipos</a></li>
 					    	</ul>
 					        
 					    </div>
@@ -91,14 +98,14 @@
 		 		</div>
 		 		<div class="ufps-col-mobile-6 ufps-col-tablet-9">
 		 			
-		 			<section>
+		 			<section id="dash_ini">
                 		<h1 class="page-header">Dashboard</h1>
                 		<p>
                     	A continuación se presentan la cantidad de integrantes inscritos por cada deporte, los deportes escojidos y delegados a cargo.
                 		</p>
 
             		</section>
-            		<section>
+            		<section id="dash_table">
             			
             			<h1 class="page-header">Fechas de Partidos</h1>
             			<p>
@@ -125,6 +132,52 @@
 						</table>
 
             		</section>
+            		<section id="dash_equi">
+            			<h1>Equipos</h1>
+            			<br>
+            			<div class="table-responsive">
+            				<table class="ufps-table ufps-table-inserted ">
+            					<thead>
+            						<th>ID Equipo</th>
+            						<th>Nombre</th>
+            						<th>Cantidad de Jugadores</th>
+            						<th>Deportes</th>
+            						<th>Puntos</th>
+            						<th colspan="2">Operaciones</th>
+            					</thead>
+
+            					<?php
+            					include("conexion.php");
+            					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.nombre as deporte, e.puntos FROM equipo e
+            					INNER JOIN deporte d ON e.idDeporte = d.idDeporte ORDER BY e.nombre ASC";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+
+            					<tr>
+            						<td><?php echo $row['idEquipo']; $idEqui = $row['idEquipo']; ?></td>
+            						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
+            						<td><?php echo $row['cantidadJugador']; $cantj = $row['cantidadJugador']; ?></td>
+            						<td><?php echo $row['deporte']; $depor = $row['deporte']; ?></td>
+            						<td><?php echo $row['puntos']; $puntos = $row['puntos']; ?></td>
+            						<td><button type="button" class="btn btn-success btn-sm">Modificar</button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm">Eliminar</a></td>
+            					</tr>
+
+            					<?php
+            				}
+            					?>
+
+
+
+            				</table>
+            			</div>
+
+            		</section>
             		
 
 		 		</div>
@@ -143,5 +196,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/ufps.min.js"></script>
+    <script src="../js/main_inicio.js"></script>
   </body>
 </html>
