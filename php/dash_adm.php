@@ -77,19 +77,27 @@
        <div class="ufps-row">
         		<div class="ufps-col-mobile-6 ufps-col-tablet-3">
 					<div class="ufps-accordion">
-					    <button class="ufps-btn-accordion">Inicio</button>
+					    <button class="ufps-btn-accordion" id="inicio">Inicio</button>
 					   
 					    <button class="ufps-btn-accordion">Delegados</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
+<<<<<<< HEAD
 					    		<li><a role="button" id="lisdel">Listar Delegados</a></li>
+=======
+					    		<li><a role="button" id="listdeg">Listar Delegados</a></li>
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
 					    	</ul>
 					        
 					    </div>
 					    <button class="ufps-btn-accordion">Equipos</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
+<<<<<<< HEAD
 					    		<li><a role="button" id="lisequi">Listar Equipos</a></li>
+=======
+					    		<li><a role="button" id="listEq">Listar Equipos</a></li>
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
 					    	</ul>
 					        
 					    </div>
@@ -98,14 +106,14 @@
 		 		</div>
 		 		<div class="ufps-col-mobile-6 ufps-col-tablet-9">
 		 			
-		 			<section>
+		 			<section id="dash_ini">
                 		<h1 class="page-header">Dashboard</h1>
                 		<p>
                     	A continuación se presentan la cantidad de integrantes inscritos por cada deporte, los deportes escojidos y delegados a cargo.
                 		</p>
 
             		</section>
-            		<section>
+            		<section id="dash_table">
             			
             			<h1 class="page-header">Fechas de Partidos</h1>
             			<p>
@@ -132,8 +140,12 @@
 						</table>
 
             		</section>
+<<<<<<< HEAD
 
             		<section>
+=======
+            		<section id="dash_equi">
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             			<h1>Equipos</h1>
             			<br>
             			<div class="table-responsive">
@@ -148,7 +160,11 @@
             					</thead>
 
             					<?php
+<<<<<<< HEAD
             					include("conexion_sandbox.php");
+=======
+            					include("conexion.php");
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.nombre as deporte, e.puntos FROM equipo e
             					INNER JOIN deporte d ON e.idDeporte = d.idDeporte ORDER BY e.nombre ASC";
 
@@ -165,8 +181,13 @@
             						<td><?php echo $row['cantidadJugador']; $cantj = $row['cantidadJugador']; ?></td>
             						<td><?php echo $row['deporte']; $depor = $row['deporte']; ?></td>
             						<td><?php echo $row['puntos']; $puntos = $row['puntos']; ?></td>
+<<<<<<< HEAD
             						<td><button type="button" class="btn btn-success btn-sm">Modificar</button></td>
             						<td><a href="" type="button" class="btn btn-danger btn-sm">Eliminar</a></td>
+=======
+            						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             					</tr>
 
             					<?php
@@ -179,7 +200,10 @@
             			</div>
 
             		</section>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             		
 
 		 		</div>
@@ -198,5 +222,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/ufps.min.js"></script>
+    <script src="../js/main_inicio.js"></script>
   </body>
 </html>
