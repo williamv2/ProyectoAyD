@@ -83,9 +83,7 @@
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
 
-					    		<li><a role="button" id="lisdel">Listar Delegados</a></li>
-
-					    		<li><a role="button" id="listdeg">Listar Delegados</a></li>
+					    		<li><a role="button" id="lisdeg">Listar Delegados</a></li>
 
 					    	</ul>
 					        
@@ -93,8 +91,6 @@
 					    <button class="ufps-btn-accordion">Equipos</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-
-					    		<li><a role="button" id="lisequi">Listar Equipos</a></li>
 
 					    		<li><a role="button" id="listEq">Listar Equipos</a></li>
 
