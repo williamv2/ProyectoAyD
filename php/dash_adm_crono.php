@@ -117,7 +117,7 @@
             						<th>Año</th>
             						<th>Fecha Inicio</th>
             						<th>Fecha Fin</th>
-            						<th>Descripcion</th>
+            						<th>Descripción</th>
             						<th colspan="2">Operaciones</th>
             					</thead>
 
