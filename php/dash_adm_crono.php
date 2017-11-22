@@ -106,12 +106,59 @@
                     	A continuación se muestran los cronogramas creados con las fechas definidas y los deportes que se realizan.
                 		</p>
 
+            		
+            		<section id="crono_dash">
+            			<br>
+            			<div class="table-responsive">
+            				<table class="ufps-table ufps-table-inserted ">
+            					<thead>
+            						<th>ID Cronograma</th>
+            						<th>Semestre</th>
+            						<th>Año</th>
+            						<th>Fecha Inicio</th>
+            						<th>Fecha Fin</th>
+            						<th>Descripcion</th>
+            						<th colspan="2">Operaciones</th>
+            					</thead>
+
+            					<?php
+            					include("conexion.php");
+            					$consulta = "SELECT * FROM jornadadeportiva";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+
+            					<tr>
+            						<td><?php echo $row['idJornada']; $idjornada = $row['idJornada']; ?></td>
+            						<td><?php echo $row['semestre']; $sem = $row['semestre']; ?></td>
+            						<td><?php echo $row['ano']; $ano = $row['ano']; ?></td>
+            						<td><?php echo $row['fechaInicio']; $fechini = $row['fechaInicio']; ?></td>
+            						<td><?php echo $row['fechaFinal']; $fechfin = $row['fechaFinal']; ?></td>
+            						<td><?php echo $row['descripcion']; $descrip = $row['descripcion']; ?></td>
+            						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+            					</tr>
+
+            					<?php
+            				}
+            					?>
+
+
+
+            				</table>
+            			</div>
+
+            		</section>
             		</section>
 
             		<section id="cronoregistro" style="display: none;">
             			<h1 class="page-header">Crear Cronograma</h1>
             			<br>
-            		<form method="POST" action="./registrocrono_sandbox.php" class="from-group">
+            		<form method="POST" action="./registrarcrono.php" class="from-group">
             			<div class="from-group">
 	                    <label> Semestre:</label>
 	                    <select class="form-control" type="number" id="sem" name="sem" required="true">
