@@ -164,8 +164,8 @@
             						<td><?php echo $row['cantidadJugador']; $cantj = $row['cantidadJugador']; ?></td>
             						<td><?php echo $row['deporte']; $depor = $row['deporte']; ?></td>
             						<td><?php echo $row['puntos']; $puntos = $row['puntos']; ?></td>
-            						<td><button type="button" class="btn btn-success btn-sm">Modificar</button></td>
-            						<td><a href="" type="button" class="btn btn-danger btn-sm">Eliminar</a></td>
+            						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
             					</tr>
 
             					<?php
