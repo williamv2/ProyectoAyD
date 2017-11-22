@@ -82,14 +82,22 @@
 					    <button class="ufps-btn-accordion">Delegados</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
+<<<<<<< HEAD
+					    		<li><a role="button" id="lisdel">Listar Delegados</a></li>
+=======
 					    		<li><a role="button" id="listdeg">Listar Delegados</a></li>
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
 					    	</ul>
 					        
 					    </div>
 					    <button class="ufps-btn-accordion">Equipos</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
+<<<<<<< HEAD
+					    		<li><a role="button" id="lisequi">Listar Equipos</a></li>
+=======
 					    		<li><a role="button" id="listEq">Listar Equipos</a></li>
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
 					    	</ul>
 					        
 					    </div>
@@ -111,7 +119,7 @@
             			<p>
                     	A continuación se presentan las fechas de los partidos acorde al cronograma.
                 		</p>
-                		<table class="ufps-table ufps-text-left">
+                		<table class="ufps-table ufps-table-inserted ufps-text-left">
 						    <thead>
 						        <th>No.</th>
 						        <th>Deporte</th>
@@ -132,7 +140,12 @@
 						</table>
 
             		</section>
+<<<<<<< HEAD
+
+            		<section>
+=======
             		<section id="dash_equi">
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             			<h1>Equipos</h1>
             			<br>
             			<div class="table-responsive">
@@ -147,7 +160,11 @@
             					</thead>
 
             					<?php
+<<<<<<< HEAD
+            					include("conexion_sandbox.php");
+=======
             					include("conexion.php");
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.nombre as deporte, e.puntos FROM equipo e
             					INNER JOIN deporte d ON e.idDeporte = d.idDeporte ORDER BY e.nombre ASC";
 
@@ -164,8 +181,13 @@
             						<td><?php echo $row['cantidadJugador']; $cantj = $row['cantidadJugador']; ?></td>
             						<td><?php echo $row['deporte']; $depor = $row['deporte']; ?></td>
             						<td><?php echo $row['puntos']; $puntos = $row['puntos']; ?></td>
+<<<<<<< HEAD
+            						<td><button type="button" class="btn btn-success btn-sm">Modificar</button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm">Eliminar</a></td>
+=======
             						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
             						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             					</tr>
 
             					<?php
@@ -178,6 +200,10 @@
             			</div>
 
             		</section>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 653cfb336ec031e69dfaebda49132f77c505955e
             		
 
 		 		</div>
