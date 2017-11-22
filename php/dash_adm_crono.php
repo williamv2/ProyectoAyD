@@ -124,8 +124,8 @@
 	                    <label>Año: </label>
 	                    <select class="form-control" id="año" name="año" required="true">
 	                    	<?php
-	                    		$a=1980;
-	                    		for ($i=0; $i <50 ; $i++) { 
+	                    		$a=2014;
+	                    		for ($i=0; $i <15 ; $i++) { 
 	                    		 
 	                    		 $a++;	
 	                    		  	                       			

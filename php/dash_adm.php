@@ -82,7 +82,14 @@
 					    <button class="ufps-btn-accordion">Delegados</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button">Listar Delegados</a></li>
+					    		<li><a role="button" id="lisdel">Listar Delegados</a></li>
+					    	</ul>
+					        
+					    </div>
+					    <button class="ufps-btn-accordion">Equipos</button>
+					    <div class="ufps-accordion-panel">
+					    	<ul class="nav nav-sidebar">
+					    		<li><a role="button" id="lisequi">Listar Equipos</a></li>
 					    	</ul>
 					        
 					    </div>
@@ -104,7 +111,7 @@
             			<p>
                     	A continuación se presentan las fechas de los partidos acorde al cronograma.
                 		</p>
-                		<table class="ufps-table ufps-text-left">
+                		<table class="ufps-table ufps-table-inserted ufps-text-left">
 						    <thead>
 						        <th>No.</th>
 						        <th>Deporte</th>
@@ -125,6 +132,54 @@
 						</table>
 
             		</section>
+
+            		<section>
+            			<h1>Equipos</h1>
+            			<br>
+            			<div class="table-responsive">
+            				<table class="ufps-table ufps-table-inserted ">
+            					<thead>
+            						<th>ID Equipo</th>
+            						<th>Nombre</th>
+            						<th>Cantidad de Jugadores</th>
+            						<th>Deportes</th>
+            						<th>Puntos</th>
+            						<th colspan="2">Operaciones</th>
+            					</thead>
+
+            					<?php
+            					include("conexion_sandbox.php");
+            					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.nombre as deporte, e.puntos FROM equipo e
+            					INNER JOIN deporte d ON e.idDeporte = d.idDeporte ORDER BY e.nombre ASC";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+
+            					<tr>
+            						<td><?php echo $row['idEquipo']; $idEqui = $row['idEquipo']; ?></td>
+            						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
+            						<td><?php echo $row['cantidadJugador']; $cantj = $row['cantidadJugador']; ?></td>
+            						<td><?php echo $row['deporte']; $depor = $row['deporte']; ?></td>
+            						<td><?php echo $row['puntos']; $puntos = $row['puntos']; ?></td>
+            						<td><button type="button" class="btn btn-success btn-sm">Modificar</button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm">Eliminar</a></td>
+            					</tr>
+
+            					<?php
+            				}
+            					?>
+
+
+
+            				</table>
+            			</div>
+
+            		</section>
+
             		
 
 		 		</div>
