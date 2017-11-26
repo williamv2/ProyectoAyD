@@ -56,8 +56,8 @@
 		             </div>
 		             <div class="ufps-navbar-left">
 		                 <a href="./dash_adm.php" class="ufps-navbar-btn">Inicio</a>
-		                 <a href="#" class="ufps-navbar-btn">Cronograma</a>
-		                 <a href="./dash_adm_deportes.php" class="ufps-navbar-btn">Deportes</a>
+		                 <a href="./dash_adm_crono.php" class="ufps-navbar-btn">Cronograma</a>
+		                 <a href="#" class="ufps-navbar-btn">Deportes</a>
 		                 <a href="" class="ufps-navbar-btn">Partidos</a>
 		             </div>
 		             <div class="ufps-navbar-right">
@@ -79,19 +79,17 @@
         		<div class="ufps-col-mobile-6 ufps-col-tablet-3">
 					<div class="ufps-accordion">
 					   
-					    <button class="ufps-btn-accordion">Cronograma</button>
+					    <button class="ufps-btn-accordion">Deportes</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button" id="crono">Cronogramas</a></li>
-					    		<li><a role="button" id="crearcrono">Crear Cronograma</a></li>
-					    		<li><a role="button" id="progfases">Programar Fases</a></li>
+					    		<li><a role="button" id="depor">Deportes</a></li>
 					    	</ul>
 					        
 					    </div>
-					    <button class="ufps-btn-accordion">Arbitro</button>
+					    <button class="ufps-btn-accordion">Deportistas</button>
 					    <div class="ufps-accordion-panel">
 					    	<ul class="nav nav-sidebar">
-					    		<li><a role="button" id="asigarbitro">Asignar Arbitro</a></li>
+					    		<li><a role="button" id="dep_tistas">Deportistas</a></li>
 					    	</ul>
 					        
 					    </div>
@@ -100,30 +98,29 @@
 		 		</div>
 		 		<div class="ufps-col-mobile-6 ufps-col-tablet-9">
 		 			
-		 			<section id="cronoini">
-                		<h1 class="page-header">Cronograma</h1>
+		 			<section id="deporini">
+                		<h1 class="page-header">Deportes</h1>
                 		<p>
-                    	A continuación se muestran los cronogramas creados con las fechas definidas y los deportes que se realizan.
+                    	A continuación se muestran los deportes creados con la cantidad de jugadores y la jornada que se realizan.
                 		</p>
 
             		
-            		<section id="crono_dash">
+            		<section id="depor_dash">
             			<br>
             			<div class="table-responsive">
             				<table class="ufps-table ufps-table-inserted">
             					<thead>
-            						<th>ID Cronograma</th>
-            						<th>Semestre</th>
-            						<th>Año</th>
-            						<th>Fecha Inicio</th>
-            						<th>Fecha Fin</th>
-            						<th>Descripción</th>
+            						<th>ID Deporte</th>
+            						<th>Nombre</th>
+            						<th>N° Jugadores</th>
+            						<th>Jornada Deportiva</th>
             						<th colspan="2">Operaciones</th>
             					</thead>
 
             					<?php
             					include("conexion.php");
-            					$consulta = "SELECT * FROM jornadadeportiva ORDER BY idjornada ASC";
+            					$consulta = "SELECT d.idDeporte, d.nombre, d.cantidadJugadores, j.descripcion FROM deporte d INNER JOIN jornadadeportiva j ON j.idJornada=d.idJornada 
+									ORDER BY d.idDeporte ASC";
 
             					$con = new conexion;
             					$resultado = $con->consulta($consulta);
@@ -133,11 +130,9 @@
             					?>
 
             					<tr>
-            						<td><?php echo $row['idJornada']; $idjornada = $row['idJornada']; ?></td>
-            						<td><?php echo $row['semestre']; $sem = $row['semestre']; ?></td>
-            						<td><?php echo $row['ano']; $ano = $row['ano']; ?></td>
-            						<td><?php echo $row['fechaInicio']; $fechini = $row['fechaInicio']; ?></td>
-            						<td><?php echo $row['fechaFinal']; $fechfin = $row['fechaFinal']; ?></td>
+            						<td><?php echo $row['idDeporte']; $idDeporte = $row['idDeporte']; ?></td>
+            						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
+            						<td><?php echo $row['cantidadJugadores']; $cantJ = $row['cantidadJugadores']; ?></td>
             						<td><?php echo $row['descripcion']; $descrip = $row['descripcion']; ?></td>
             						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
             						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
@@ -155,54 +150,60 @@
             		</section>
             		</section>
 
-            		<section id="cronoregistro" style="display: none;">
-            			<h1 class="page-header">Crear Cronograma</h1>
+            		<section id="deportistas" style="display: none;">
+            			<h1 class="page-header">Listado de Deportistas</h1>
+            			<p>
+            				Listado de Deportistas inscritos en los diferentes equipo.
+            			</p>
             			<br>
-            		<form method="POST" action="./registrarcrono.php" class="from-group">
-            			<div class="from-group">
-	                    <label> Semestre:</label>
-	                    <select class="form-control" type="number" id="sem" name="sem" required="true">
-	                    	<option value="1">Primer Semestre</option>
-	                    	<option value="2">Segundo Semestre</option>
-	                    </select>
-	                    </div>
-	                    <br>
-	                    <div class="from-group">
-	                    <label>Año: </label>
-	                    <select class="form-control" id="año" name="año" required="true">
-	                    	<?php
-	                    		$a=2014;
-	                    		for ($i=0; $i <15 ; $i++) { 
-	                    		 
-	                    		 $a++;	
-	                    		  	                       			
-	                       		?>	
-	                       		<option value="<?php echo $a ?>"><?php echo $a; ?></option>
-	                       		<?php
-	                    		}
 
-	                    	?>
-	                    </select>
-	                    </div>
-	                    <br>
-	                    <div class="from-group">
-	                    <label>Fecha Inicio:</label>	
-	                    <input type="date" id="fechini" name="fechini" required="true" class="form-control">
-	                    </div>
-	                    <br>
-	                    <div class="from-group">
-	                    <label>Fecha Fin:</label>	
-	                    <input type="date" id="fechfin" name="fechfin" required="true" class="form-control">
-	                    </div>
-	                    <br>
-	                    <div class="from-group">
-	                    <label>Descripcion:</label>	
-	                    <textarea id="descrip" rows="3" cols="100" name="descrip" class="form-control"></textarea>
-	                    </div>
-	                    <br>
-	                    <input type="submit" name="crcrono" class="ufps-btn" value="Crear Cronograma">
-                	</form>
+            			<div class="table-responsive">
+            				<table class="ufps-table ufps-table-inserted ">
+            					<thead>
+            						<th>Codigo Deportista</th>
+            						<th>Nombres</th>
+            						<th>Apellidos</th>
+            						<th>Edad</th>
+            						<th>Genero</th>
+            						<th>Correo</th>
+            						<th>Equipo</th>
+            						<th colspan="2">Operaciones</th>
+            					</thead>
+
+            					<?php
+            					
+            					$consulta = "SELECT d.codigo, d.nombre, d.apellido, d.edad, d.genero, d.correo, e.nombre AS equipo FROM deportista d INNER JOIN equipo e ON d.idEquipo = e.idEquipo ORDER BY d.nombre ASC";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+
+            					<tr>
+            						<td><?php echo $row['codigo']; $codigo= $row['codigo']; ?></td>
+            						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
+            						<td><?php echo $row['apellido']; $apell = $row['apellido']; ?></td>
+            						<td><?php echo $row['edad']; $edad = $row['edad']; ?></td>
+            						<td><?php echo $row['genero']; $gen= $row['genero']; ?></td>
+            						<td><?php echo $row['correo']; $correo = $row['correo']; ?></td>
+            						<td><?php echo $row['equipo']; $equipo = $row['equipo']; ?></td>
+            						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+            					</tr>
+
+            					<?php
+            				}
+            					?>
+
+
+
+            				</table>
+            			</div>
+
             		</section>
+            		
             		
 
 		 		</div>
@@ -221,6 +222,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/ufps.min.js"></script>
-    <script src="../js/main_crono.js"></script>
+    <script src="../js/main_depor.js"></script>
   </body>
 </html>
