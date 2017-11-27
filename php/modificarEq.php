@@ -5,10 +5,11 @@ include ("conexion.php");
 
 $idEq = $_POST['midequi'];
 $nom = $_POST['mnomEq'];
+$deporte = $_POST['mdeporte'];
 
 $con = new conexion;
 
-$query = "UPDATE equipo SET nombre='$nom' WHERE idEquipo ='$idEq'";
+$query = "UPDATE equipo SET nombre='$nom', idDeporte='$deporte' WHERE idEquipo ='$idEq'";
 
 //Ejecutar Consulta
 $resultado = $con->consulta($query);

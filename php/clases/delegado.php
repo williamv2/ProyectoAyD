@@ -6,7 +6,6 @@
 class delegado 
 {
 
-	//private $idJornada;
 	private $codigo;
 	private $clave;
 	private $tipo;

@@ -5,10 +5,11 @@ include ("conexion.php");
 
 $iddel = $_POST['middel'];
 $clave = $_POST['mclvdel'];
+$jornada = $_POST['mjdel'];
 
 $con = new conexion;
 
-$query = "UPDATE usuario SET clave='$clave' WHERE id ='$iddel'";
+$query = "UPDATE usuario SET clave='$clave', asigna='$jornada' WHERE id ='$iddel'";
 
 //Ejecutar Consulta
 $resultado = $con->consulta($query);

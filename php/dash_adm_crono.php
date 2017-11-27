@@ -115,8 +115,10 @@
             						<th>ID Cronograma</th>
             						<th>Semestre</th>
             						<th>Año</th>
-            						<th>Fecha Inicio</th>
-            						<th>Fecha Fin</th>
+            						<th><div class="ufps-tooltip">Fecha Inicio<span class="ufps-tooltip-content-left">Año/Mes/Dia</span>
+										</div></th>
+            						<th><div class="ufps-tooltip">Fecha Fin<span class="ufps-tooltip-content-left">Año/Mes/Dia</span>
+										</div></th>
             						<th>Descripción</th>
             						<th colspan="2">Operaciones</th>
             					</thead>
@@ -139,8 +141,8 @@
             						<td><?php echo $row['fechaInicio']; $fechini = $row['fechaInicio']; ?></td>
             						<td><?php echo $row['fechaFinal']; $fechfin = $row['fechaFinal']; ?></td>
             						<td><?php echo $row['descripcion']; $descrip = $row['descripcion']; ?></td>
-            						<td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-            						<td><a href="" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+            						<td><button type="button" class="btn btn-success btn-sm" onclick="modificarcrono('<?php echo $idjornada; ?>','<?php echo $sem; ?>','<?php echo $ano; ?>', '<?php echo $fechini; ?>','<?php echo $fechfin; ?>','<?php echo $descrip; ?>');openModal('modalcrono');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            						<td><a href="./eliminarcrono.php?idjornada=<?php echo $row['idJornada'];?>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
             					</tr>
 
             					<?php
@@ -153,6 +155,53 @@
             			</div>
 
             		</section>
+            		</section>
+
+            		<section id="crono_arbitro" style="display: none;">
+            			<button type="button" class="btn btn-default btn-md pull-right" onclick="openModal('modalcrono_rarb')" ><span class="glyphicon glyphicon-plus"></span>Agregar</button> 
+            			<h1 class="page-header">Arbitros</h1>
+            			<div class="table-responsive">
+            				<table class="ufps-table ufps-table-inserted">
+            					<thead>
+            						<th>Cédula</th>
+            						<th>Nombres</th>
+            						<th>Apellidos</th>
+            						<th>Deporte</th>
+            						<th><div class="ufps-tooltip">Fecha Partido<span class="ufps-tooltip-content-left">Año/Mes/Dia</span>
+										</div></th>
+            						<th colspan="2">Operaciones</th>
+            					</thead>
+
+            					<?php
+            					
+            					$consulta = "SELECT a.cedula, a.nombre, a.apellido, a.deporte AS iddeporte, a.idpartido, d.nombre AS deporte, p.fecha FROM arbitro a INNER JOIN deporte d ON d.idDeporte=a.deporte INNER JOIN partido p ON p.idpartido=a.idpartido ORDER BY a.nombre ASC";
+
+            					$con = new conexion;
+            					$resultado = $con->consulta($consulta);
+
+            					while ($row = $resultado->fetch_assoc()) {
+            					
+            					?>
+
+            					<tr>
+            						<td><?php echo $row['cedula']; $cedula = $row['cedula']; ?></td>
+            						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
+            						<td><?php echo $row['apellido']; $apell = $row['apellido']; ?></td>
+            						<td><?php echo $row['deporte']; $deporte = $row['iddeporte']; ?></td>
+            						<td><?php echo $row['fecha']; $fech = $row['fecha']; ?></td>
+            						<td><button type="button" class="btn btn-success btn-sm" onclick="modificararbitro('<?php echo $cedula; ?>','<?php echo $nom; ?>','<?php echo $apell; ?>', '<?php echo $deporte; ?>','<?php echo $fech; ?>');openModal('modalcrono_marb');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            						<td><a href="./eliminararb.php?idjornada=<?php echo $row['idJornada'];?>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+            					</tr>
+
+            					<?php
+            				}
+            					?>
+
+
+
+            				</table>
+            			</div>
+
             		</section>
 
             		<section id="cronoregistro" style="display: none;">
@@ -203,8 +252,204 @@
 	                    <input type="submit" name="crcrono" class="ufps-btn" value="Crear Cronograma">
                 	</form>
             		</section>
+
+
             		
 
+            		<div id="modalcrono" class="ufps-modal">
+                        <div class="ufps-modal-content">
+                            <div class="ufps-modal-header">
+                                <span class="ufps-modal-close">×</span>
+                                <h2>Modificar Cronograma</h2>
+                            </div>
+                            <div class="ufps-modal-body">
+                                <form method="POST" action="./modificarcrono.php" class="from-group">
+                                    <div class="from-group">
+                                    <label> ID Cronograma:</label>
+                                    <input type="number" name="midcron" id="midcron" required="true" class="form-control" disabled="true">
+                                    <input type="number" id="midcrono" name="midcrono" required="true" class="form-control" style="display: none;">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+                                    <label> Semestre:</label>
+                                    <select id="msem" name="msem" required="true" class="form-control">
+                                    	<option value="1">Primer Semestre</option>
+                                    	<option value="2">Segundo Semestre</option>
+                                    </select>
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+                                    <label> Año:</label>
+                                    <select class="form-control" id="mano" name="mano" required="true">
+					                    	<?php
+					                    		$a=2014;
+					                    		for ($i=0; $i <15 ; $i++) { 
+					                    		 
+					                    		 $a++;	
+					                    		  	                       			
+					                       		?>	
+					                       		<option value="<?php echo $a ?>"><?php echo $a; ?></option>
+					                       		<?php
+					                    		}
+
+					                    	?>
+					                </select>
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+				                    <label>Fecha Inicio:</label>	
+				                    <input type="date" id="mfechini" name="mfechini" required="true" class="form-control">
+				                    </div>
+				                    <br>
+				                    <div class="from-group">
+				                    <label>Fecha Fin:</label>	
+				                    <input type="date" id="mfechfin" name="mfechfin" required="true" class="form-control">
+				                    </div>
+				                    <br>
+				                    <div class="from-group">
+				                    <label>Descripcion:</label>	
+				                    <textarea id="mdescrip" rows="3" cols="100" name="mdescrip" class="form-control"></textarea>
+				                    </div>
+				                    <br>
+                               
+                            </div>
+                            <div class="ufps-modal-footer">
+                                <input type="submit" name="modifcrono" class="ufps-btn" value="Modificar Cronograma">
+                             </div>
+                            </form>
+                         </div>
+                    </div>
+
+
+
+                    <div id="modalcrono_rarb" class="ufps-modal">
+                        <div class="ufps-modal-content">
+                            <div class="ufps-modal-header">
+                                <span class="ufps-modal-close">×</span>
+                                <h2>Registrar Arbitro</h2>
+                            </div>
+                            <div class="ufps-modal-body">
+                                <form method="POST" action="./registroarbitro.php" class="from-group">
+                                    <div class="from-group">
+                                    <label> Cédula:</label>
+                                    <input type="text" name="ced" id="ced" required="true" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+                                    <label> Nombres:</label>
+                                    <input type="text" id="nomarb" name="nomarb" required="true" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+                                    <label> Apellidos:</label>
+                                    <input type="text" class="form-control" id="apearb" name="apearb" required="true">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+				                    <label>Deporte:</label>	
+				                    <select class="form-control" id="deparb" name="deparb" required="true">
+                                        <?php
+                                            $consulta = "SELECT * FROM deporte";
+
+                                            $con = new conexion;
+                                            $resultado = $con->consulta($consulta);
+
+                                            while ($row = $resultado->fetch_assoc()) {                                    
+                                            ?>  
+                                            <option value="<?php echo $row['idDeporte'] ?>"><?php echo $row['nombre']?></option>
+                                            <?php
+                                            }
+
+                                        ?>
+                                    </select>
+				                    </div>
+				                    <br>
+				                    <div class="from-group">
+				                    <label>Partido:</label>	
+				                    <select id="fechpart" name="fechpart" required="true" class="form-control">
+				                    	<?php
+                                            $consulta = "SELECT * FROM partido";
+
+                                            $con = new conexion;
+                                            $resultado = $con->consulta($consulta);
+
+                                            while ($row = $resultado->fetch_assoc()) {                                    
+                                            ?>  
+                                            <option value="<?php echo $row['idpartido'] ?>"><?php echo "Fecha: ".$row['fecha']." Lugar: ".$row['lugar']?></option>
+                                            <?php
+                                            }
+
+                                        ?>
+				                	</select>
+				                    </div>
+				                    <br>
+                               
+                            </div>
+                            <div class="ufps-modal-footer">
+                                <input type="submit" name="modifarb" class="ufps-btn" value="Registrar Arbitro">
+                             </div>
+                            </form>
+                         </div>
+                    </div>	
+
+
+
+                    <div id="modalcrono_marb" class="ufps-modal">
+                        <div class="ufps-modal-content">
+                            <div class="ufps-modal-header">
+                                <span class="ufps-modal-close">×</span>
+                                <h2>Modificar Arbitro</h2>
+                            </div>
+                            <div class="ufps-modal-body">
+                                <form method="POST" action="./modificararbitro.php" class="from-group">
+                                    <div class="from-group">
+                                    <label> Cédula:</label>
+                                    <input type="number" name="mced" id="mced" required="true" class="form-control" disabled="true">
+                                    <input type="number" id="mcedula" name="mcedula" required="true" class="form-control" style="display: none;">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+                                    <label> Nombres:</label>
+                                    <input type="text" id="mnomarb" name="mnomarb" required="true" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+                                    <label> Apellidos:</label>
+                                    <input type="text" class="form-control" id="mapearb" name="mapearb" required="true">
+                                    </div>
+                                    <br>
+                                    <div class="from-group">
+				                    <label>Deporte:</label>	
+				                    <select class="form-control" id="mdeparb" name="mdeparb" required="true">
+                                        <?php
+                                            $consulta = "SELECT * FROM deporte";
+
+                                            $con = new conexion;
+                                            $resultado = $con->consulta($consulta);
+
+                                            while ($row = $resultado->fetch_assoc()) {                                    
+                                            ?>  
+                                            <option value="<?php echo $row['idDeporte'] ?>"><?php echo $row['nombre']?></option>
+                                            <?php
+                                            }
+
+                                        ?>
+                                    </select>
+				                    </div>
+				                    <br>
+				                    <div class="from-group">
+				                    <label>Fecha Partido:</label>	
+				                    <input type="date" id="mfechpart" name="mfechpart" required="true" class="form-control">
+				                    </div>
+				                    <br>
+                               
+                            </div>
+                            <div class="ufps-modal-footer">
+                                <input type="submit" name="modifarb" class="ufps-btn" value="Modificar Arbitro">
+                             </div>
+                            </form>
+                         </div>
+                    </div>
 		 		</div>
 		</div>
 		 
@@ -222,5 +467,6 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/ufps.min.js"></script>
     <script src="../js/main_crono.js"></script>
+    <script src="../js/modificar.js"></script>
   </body>
 </html>

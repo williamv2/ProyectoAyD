@@ -161,7 +161,7 @@
 
             					include("conexion.php");
 
-            					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.nombre as deporte, e.puntos FROM equipo e
+            					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.idDeporte, d.nombre as deporte, e.puntos FROM equipo e
             					INNER JOIN deporte d ON e.idDeporte = d.idDeporte ORDER BY e.idEquipo ASC";
 
             					$con = new conexion;
@@ -175,7 +175,7 @@
             						<td><?php echo $row['idEquipo']; $idEqui = $row['idEquipo']; ?></td>
             						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
             						<td><?php echo $row['cantidadJugador']; $cantj = $row['cantidadJugador']; ?></td>
-            						<td><?php echo $row['deporte']; $depor = $row['deporte']; ?></td>
+            						<td><?php echo $row['deporte']; $depor = $row['idDeporte']; ?></td>
             						<td><?php echo $row['puntos']; $puntos = $row['puntos']; ?></td>
 
             						<td><button type="button" class="btn btn-success btn-sm" onclick="modificarequipo('<?php echo $idEqui; ?>','<?php echo $nom; ?>','<?php echo $cantj; ?>', '<?php echo $depor; ?>');openModal('modalmodifieq');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
@@ -215,7 +215,7 @@
 
                                 
 
-                                $consulta = "SELECT u.id, u.codigo, u.clave, d.nombre, d.apellido, j.descripcion FROM usuario u INNER JOIN deportista d ON u.codigo=d.codigo INNER JOIN jornadadeportiva j ON j.idJornada=u.asigna WHERE u.tipo='D'";
+                                $consulta = "SELECT u.id, u.codigo, u.clave, d.nombre, d.apellido, j.idJornada, j.descripcion FROM usuario u INNER JOIN deportista d ON u.codigo=d.codigo INNER JOIN jornadadeportiva j ON j.idJornada=u.asigna WHERE u.tipo='D'";
 
                                 $con = new conexion;
                                 $resultado = $con->consulta($consulta);
@@ -229,7 +229,7 @@
                                     <td><?php echo $row['codigo']; $cod = $row['codigo']; ?></td>
                                     <td><?php echo $row['clave']; $clv = $row['clave']; ?></td>
                                     <td><?php echo $row['nombre']." ".$row['apellido']; $nom = $row['nombre']." ".$row['apellido']; ?></td>
-                                    <td><?php echo $row['descripcion']; $desc = $row['descripcion']; ?></td>
+                                    <td><?php echo $row['descripcion']; $desc = $row['idJornada']; ?></td>
 
                                     <td><button type="button" class="btn btn-success btn-sm" onclick="modificardelegado('<?php echo $id; ?>','<?php echo $cod; ?>','<?php echo $clv; ?>', '<?php echo $nom; ?>','<?php echo $desc; ?>');openModal('modalmodifdel');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
                                     <td><a href="./eliminardel.php?iddelegado=<?php echo $row['id'];?>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
@@ -317,7 +317,21 @@
                                     <br>
                                     <div class="from-group">
                                     <label>Deporte:</label>
-                                    <input class="form-control" id="mdeporte" name="mdeporte" required="true" disabled="true">
+                                    <select class="form-control" id="mdeporte" name="mdeporte" required="true">
+                                        <?php
+                                            $consulta = "SELECT * FROM deporte";
+
+                                            $con = new conexion;
+                                            $resultado = $con->consulta($consulta);
+
+                                            while ($row = $resultado->fetch_assoc()) {                                    
+                                            ?>  
+                                            <option value="<?php echo $row['idDeporte'] ?>"><?php echo $row['nombre']?></option>
+                                            <?php
+                                            }
+
+                                        ?>
+                                    </select>
                                     </div>
                                     <br>
                                
@@ -420,7 +434,21 @@
                                     <br>
                                     <div class="from-group">
                                     <label>Jornada Asignada:</label>
-                                    <input class="form-control" id="mjdel" name="mjdel" required="true" disabled="true">
+                                    <select class="form-control" id="mjdel" name="mjdel" required="true">
+                                        <?php
+                                            $consulta = "SELECT * FROM jornadadeportiva";
+
+                                            $con = new conexion;
+                                            $resultado = $con->consulta($consulta);
+
+                                            while ($row = $resultado->fetch_assoc()) {                                    
+                                            ?>  
+                                            <option value="<?php echo $row['idJornada'] ?>"><?php echo $row['descripcion']?></option>
+                                            <?php
+                                            }
+
+                                        ?>
+                                    </select>
                                     </div>
                                     <br>
                                
