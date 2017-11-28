@@ -41,3 +41,40 @@ function modificararbitro(cedula, nombre, apellido, deporte, fecha){
         document.getElementById('mfechpart').value = fecha;
         
 }
+
+function modificardeporte(iddepor, nombre, cantij, jornada){
+
+	document.getElementById('middep').value = iddepor;
+        document.getElementById('middepor').value = iddepor;
+        document.getElementById('mnomdep').value = nombre;
+        document.getElementById('mnumjug').value = cantij;
+        document.getElementById('mjord').value = jornada;
+        
+}
+
+function modificardeportista(codigo, nombre, apellido, edad, genero, correo, equipo){
+
+	document.getElementById('mcodts').value = codigo;
+        document.getElementById('mcoddts').value = codigo;
+        document.getElementById('mnomdts').value = nombre;
+        document.getElementById('mapedts').value = apellido;
+        document.getElementById('meddts').value = edad;
+        document.getElementById('mgedts').value = genero;
+        document.getElementById('mcordts').value = correo;
+        document.getElementById('meqdts').value = equipo;
+        
+}
+
+function modificarpartido(idpartido, fecha, lugar, fase, eqlocal, eqvisi, pvisi, plocal){
+
+	document.getElementById('midpar').value = idpartido
+        document.getElementById('midpartido').value = idpartido;
+        document.getElementById('mfech').value = fecha;
+        document.getElementById('mlugar').value = lugar;
+        document.getElementById('mfase').value = fase;
+        document.getElementById('meqlocal').value = eqlocal;
+        document.getElementById('meqvisi').value = eqvisi;
+        document.getElementById('mpvisi').value = pvisi;
+        document.getElementById('mplocal').value = plocal;
+        
+}

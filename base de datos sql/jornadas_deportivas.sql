@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2017 a las 03:42:40
+-- Tiempo de generación: 28-11-2017 a las 05:58:49
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -39,7 +39,8 @@ CREATE TABLE `arbitro` (
 --
 
 INSERT INTO `arbitro` (`cedula`, `nombre`, `apellido`, `deporte`, `idpartido`) VALUES
-('1090678736', 'Mario', 'Jimenez', 1, 1);
+('1090678736', 'Mario', 'Jimenez', 1, 1),
+('1090786365', 'Carlos', 'Ortega', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -50,6 +51,7 @@ INSERT INTO `arbitro` (`cedula`, `nombre`, `apellido`, `deporte`, `idpartido`) V
 CREATE TABLE `deporte` (
   `idDeporte` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cantidadJugadores` int(11) NOT NULL,
   `idJornada` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -57,8 +59,10 @@ CREATE TABLE `deporte` (
 -- Volcado de datos para la tabla `deporte`
 --
 
-INSERT INTO `deporte` (`idDeporte`, `nombre`, `idJornada`) VALUES
-(1, 'Baloncesto', 1);
+INSERT INTO `deporte` (`idDeporte`, `nombre`, `cantidadJugadores`, `idJornada`) VALUES
+(1, 'Baloncesto', 10, 1),
+(2, 'MicroFutbol', 5, 1),
+(3, 'Voleibol', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +85,10 @@ CREATE TABLE `deportista` (
 --
 
 INSERT INTO `deportista` (`codigo`, `nombre`, `apellido`, `edad`, `genero`, `correo`, `idEquipo`) VALUES
+('1150973', 'Bayardo', 'Pineda', '22', 'M', 'bayardo@hotmail.com', 1),
+('1150976', 'Franklin', 'Vasquez', '22', 'M', 'franklin@hotmail.com', 1),
+('1150982', 'Julian', 'Olarte', '22', 'M', 'julianOlarte@hotmail.com', 2),
+('1150983', 'Edgar', 'Diaz', '23', 'M', 'edgar@hotmailcom', NULL),
 ('1150984', 'William', 'Velandia', '22', 'M', 'williamhenryvv@ufps.edu.co', NULL),
 ('1151021', 'Manuel', 'Gallardo', '22', 'M', 'mdario@gmail.com', 2);
 
@@ -95,11 +103,6 @@ DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `tr_deportista_equipoDELETE` AFTER DELETE ON `deportista` FOR EACH ROW UPDATE equipo e SET e.cantidadJugador= e.cantidadJugador-1
 WHERE e.idEquipo = old.idEquipo
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `tr_deportista_equipoUPDATE` AFTER UPDATE ON `deportista` FOR EACH ROW UPDATE equipo e SET e.cantidadJugador= e.cantidadJugador+1
-WHERE e.idEquipo = new.idEquipo
 $$
 DELIMITER ;
 
@@ -122,9 +125,10 @@ CREATE TABLE `equipo` (
 --
 
 INSERT INTO `equipo` (`idEquipo`, `nombre`, `cantidadJugador`, `idDeporte`, `puntos`) VALUES
-(1, 'Los capirusos', 0, 1, 3),
-(2, 'Nullpointer', 1, 1, 3),
-(3, 'cucuta', 0, 1, 0);
+(1, 'Capirusos', 2, 1, 10),
+(2, 'Nullpointer', 2, 1, 5),
+(3, 'Cucuta Deportivo', 0, 1, 0),
+(4, 'Las Aguilas', 0, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -146,7 +150,8 @@ CREATE TABLE `jornadadeportiva` (
 --
 
 INSERT INTO `jornadadeportiva` (`idJornada`, `semestre`, `ano`, `fechaInicio`, `fechaFinal`, `descripcion`) VALUES
-(1, '2', '2017', '2017-11-06', '2017-11-20', 'Jornada Deportiva 2017');
+(1, '2', '2017', '2017-11-06', '2017-11-13', 'Jornada Deportiva II-2017'),
+(2, '1', '2018', '2018-03-05', '2018-03-12', 'Jornada Deportiva I-2018');
 
 -- --------------------------------------------------------
 
@@ -171,7 +176,8 @@ CREATE TABLE `partido` (
 
 INSERT INTO `partido` (`idpartido`, `fecha`, `lugar`, `fase`, `local`, `visitante`, `puntosVisitante`, `puntosLocal`) VALUES
 (1, '2017-11-07', 'Coliseo UFPS', 'grupos', 1, 2, '62', '70'),
-(2, '2017-11-09', 'Coliseo UFPS', 'grupos', 2, 3, '80', '102');
+(2, '2018-03-06', 'Coliseo UFPS', 'grupos', 2, 3, '80', '102'),
+(3, '2017-11-11', 'Coliseo UFPS', 'grupos', 2, 1, '102', '92');
 
 -- --------------------------------------------------------
 
@@ -183,16 +189,18 @@ CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `codigo` varchar(7) COLLATE utf8_spanish2_ci NOT NULL,
   `clave` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `tipo` varchar(1) COLLATE utf8_spanish2_ci NOT NULL
+  `tipo` varchar(1) COLLATE utf8_spanish2_ci NOT NULL,
+  `asigna` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `codigo`, `clave`, `tipo`) VALUES
-(1, '1150984', '123', 'A'),
-(2, '1151021', '1234', 'D');
+INSERT INTO `usuario` (`id`, `codigo`, `clave`, `tipo`, `asigna`) VALUES
+(1, '1150984', '123', 'A', 0),
+(2, '1151021', 'delegado1234', 'D', 1),
+(3, '1150983', '123456', 'D', 2);
 
 --
 -- Índices para tablas volcadas
@@ -246,7 +254,8 @@ ALTER TABLE `partido`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `codigo` (`codigo`);
+  ADD KEY `codigo` (`codigo`),
+  ADD KEY `asigna` (`asigna`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -256,27 +265,27 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `deporte`
 --
 ALTER TABLE `deporte`
-  MODIFY `idDeporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idDeporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `idEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `jornadadeportiva`
 --
 ALTER TABLE `jornadadeportiva`
-  MODIFY `idJornada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idJornada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `partido`
 --
 ALTER TABLE `partido`
-  MODIFY `idpartido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idpartido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --

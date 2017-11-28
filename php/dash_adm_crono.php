@@ -58,7 +58,7 @@
 		                 <a href="./dash_adm.php" class="ufps-navbar-btn">Inicio</a>
 		                 <a href="#" class="ufps-navbar-btn">Cronograma</a>
 		                 <a href="./dash_adm_deportes.php" class="ufps-navbar-btn">Deportes</a>
-		                 <a href="" class="ufps-navbar-btn">Partidos</a>
+		                 <a href="./dash_adm_partido.php" class="ufps-navbar-btn">Partidos</a>
 		             </div>
 		             <div class="ufps-navbar-right">
 		             	<a href="" class="ufps-navbar-btn"><span class="glyphicon glyphicon-user"></span><?php echo $nombre;  ?></a>
@@ -188,9 +188,9 @@
             						<td><?php echo $row['nombre']; $nom = $row['nombre']; ?></td>
             						<td><?php echo $row['apellido']; $apell = $row['apellido']; ?></td>
             						<td><?php echo $row['deporte']; $deporte = $row['iddeporte']; ?></td>
-            						<td><?php echo $row['fecha']; $fech = $row['fecha']; ?></td>
+            						<td><?php echo $row['fecha']; $fech = $row['idpartido']; ?></td>
             						<td><button type="button" class="btn btn-success btn-sm" onclick="modificararbitro('<?php echo $cedula; ?>','<?php echo $nom; ?>','<?php echo $apell; ?>', '<?php echo $deporte; ?>','<?php echo $fech; ?>');openModal('modalcrono_marb');"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-            						<td><a href="./eliminararb.php?idjornada=<?php echo $row['idJornada'];?>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
+            						<td><a href="./eliminararbitro.php?cedula=<?php echo $row['cedula'];?>" type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a></td>
             					</tr>
 
             					<?php
@@ -438,8 +438,22 @@
 				                    </div>
 				                    <br>
 				                    <div class="from-group">
-				                    <label>Fecha Partido:</label>	
-				                    <input type="date" id="mfechpart" name="mfechpart" required="true" class="form-control">
+				                    <label>Partido:</label>	
+				                    <select id="mfechpart" name="mfechpart" required="true" class="form-control">
+				                    	<?php
+                                            $consulta = "SELECT * FROM partido";
+
+                                            $con = new conexion;
+                                            $resultado = $con->consulta($consulta);
+
+                                            while ($row = $resultado->fetch_assoc()) {                                    
+                                            ?>  
+                                            <option value="<?php echo $row['idpartido'] ?>"><?php echo "Fecha: ".$row['fecha']." Lugar: ".$row['lugar']?></option>
+                                            <?php
+                                            }
+
+                                        ?>
+				                	</select>
 				                    </div>
 				                    <br>
                                

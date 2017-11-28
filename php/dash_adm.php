@@ -55,7 +55,7 @@
 		                 <a href="#" class="ufps-navbar-btn">Inicio</a>
 		                 <a href="./dash_adm_crono.php" class="ufps-navbar-btn">Cronograma</a>
 		                 <a href="./dash_adm_deportes.php" class="ufps-navbar-btn">Deportes</a>
-		                 <a href="" class="ufps-navbar-btn">Partidos</a>
+		                 <a href="./dash_adm_partido.php" class="ufps-navbar-btn">Partidos</a>
 		             </div>
 		             <div class="ufps-navbar-right">
 		             	<a href="" class="ufps-navbar-btn"><span class="glyphicon glyphicon-user"></span><?php echo $nombre;  ?></a>
@@ -464,7 +464,7 @@
 
 		 	</div>
 		</div>
-		 
+		
     </div>
 
 	

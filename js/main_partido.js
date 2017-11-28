@@ -1,15 +1,15 @@
 $(document).ready(function(){
-            $('#inicio').click(function() {
+            $('#partido').click(function() {
                 
-                 $('#dash_ini').fadeIn(500) && $('#dash_equi').fadeOut(300) && $('#dash_table').fadeIn(500) && $('#dash_del').fadeOut(300) /*&& $('#regiservicio').fadeOut(300) && $('#generpago').fadeOut(300)*/;
+                 $('#partido_dash').fadeIn(500) /*&& $('#dash_equi').fadeOut(300) && $('#dash_table').fadeIn(500) && $('#dash_del').fadeOut(300) && $('#regiservicio').fadeOut(300) && $('#generpago').fadeOut(300)*/;
             })
-            $('#listEq').click(function() {
+            /*$('#listEq').click(function() {
                 
-                 $('#dash_equi').fadeIn(500) && $('#dash_ini').fadeOut(300) && $('#dash_table').fadeOut(300) && $('#dash_del').fadeOut(300) /*&& $('#generpago').fadeOut(300) && $('#genernomina').fadeOut(300)*/;
+                 $('#dash_equi').fadeIn(500) && $('#dash_ini').fadeOut(300) && $('#dash_table').fadeOut(300) && $('#dash_del').fadeOut(300) && $('#generpago').fadeOut(300) && $('#genernomina').fadeOut(300);
             })
-            $('#listdeg').click(function() {
+            /*$('#listdeg').click(function() {
                 
-                 $('#dash_del').fadeIn(500) && $('#dash_ini').fadeOut(300) && $('#dash_equi').fadeOut(300)&& $('#dash_table').fadeOut(300) /*&& $('#generpago').fadeOut(300) && $('#genernomina').fadeOut(300)*/;
+                 $('#dash_del').fadeIn(500) && $('#dash_ini').fadeOut(300) && $('#dash_equi').fadeOut(300)&& $('#dash_table').fadeOut(300) && $('#generpago').fadeOut(300) && $('#genernomina').fadeOut(300);
             })
             /*$('#regservicio').click(function() {
                 
