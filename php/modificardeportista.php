@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $codigo = $_POST['mcoddts'];
 $nombre = $_POST['mnomdts'];

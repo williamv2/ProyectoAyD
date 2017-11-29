@@ -119,7 +119,7 @@
             					</thead>
 
             					<?php
-            					include("conexion.php");
+            					include("conexion1.php");
             					$consulta = "SELECT d.idDeporte, d.nombre, d.cantidadJugadores, d.idJornada, j.descripcion FROM deporte d INNER JOIN jornadadeportiva j ON j.idJornada=d.idJornada 
 									ORDER BY d.idDeporte ASC";
 
@@ -174,7 +174,7 @@
 
             					<?php
             					
-            					$consulta = "SELECT d.codigo, d.nombre, d.apellido, d.edad, d.genero, d.correo, d.idEquipo, e.nombre AS equipo FROM deportista d INNER JOIN equipo e ON d.idEquipo = e.idEquipo ORDER BY d.nombre ASC";
+            					$consulta = "SELECT d.codigo, d.nombre, d.apellido, d.edad, d.genero, d.correo, d.idEquipo, e.nombre AS equipo FROM deportista d INNER JOIN equipo e ON d.idEquipo = e.idEquipo ORDER BY d.nombre AND e.nombre ASC";
 
             					$con = new conexion;
             					$resultado = $con->consulta($consulta);

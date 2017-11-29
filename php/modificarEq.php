@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $idEq = $_POST['midequi'];
 $nom = $_POST['mnomEq'];

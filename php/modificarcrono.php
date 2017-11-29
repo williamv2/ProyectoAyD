@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $idjornada = $_POST['midcrono'];
 $semestre = $_POST['msem'];

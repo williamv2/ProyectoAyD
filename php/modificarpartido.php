@@ -1,6 +1,6 @@
 <?php
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $idpartido =$_POST['midpartido'];
 $fecha = $_POST['mfech'];

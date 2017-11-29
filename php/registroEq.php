@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 include('clases/equipo.php');
 
 $nombre = $_POST['nombreEq'];

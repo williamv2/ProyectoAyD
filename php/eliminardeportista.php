@@ -1,6 +1,6 @@
 <?php 
 
-	include ("conexion.php");
+	include ("conexion1.php");
 	
 
 	$codigo = $_REQUEST['codigo'];

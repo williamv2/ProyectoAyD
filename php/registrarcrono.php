@@ -1,6 +1,6 @@
 <?php
 
-include ("conexion.php");
+include ("conexion1.php");
 include('clases/jornada.php');
 
 $semestre = $_POST['sem'];

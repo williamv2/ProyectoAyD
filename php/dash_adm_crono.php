@@ -124,7 +124,7 @@
             					</thead>
 
             					<?php
-            					include("conexion.php");
+            					include("conexion1.php");
             					$consulta = "SELECT * FROM jornadadeportiva ORDER BY idjornada ASC";
 
             					$con = new conexion;

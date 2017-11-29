@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $iddeporte = $_POST['middepor'];
 $nombre = $_POST['mnomdep'];

@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 include('clases/delegado.php');
 
 $codigo = $_POST['depts'];

@@ -117,7 +117,7 @@
             					</thead>
 
             					<?php
-            					include("conexion.php");
+            					include("conexion1.php");
             					$consulta = "SELECT p.idpartido, p.fecha, p.lugar, p.fase, p.local, e.nombre AS equipolocal, p.visitante, eq.nombre AS equipovisitante, p.puntosVisitante, p.puntosLocal FROM partido p INNER JOIN equipo e ON e.idEquipo=p.local INNER JOIN equipo eq ON eq.idEquipo=p.visitante ORDER BY p.idpartido ASC";
 
             					$con = new conexion;

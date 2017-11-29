@@ -159,7 +159,7 @@
 
             					<?php
 
-            					include("conexion.php");
+            					include("conexion1.php");
 
             					$consulta = "SELECT e.idEquipo, e.nombre, e.cantidadJugador, d.idDeporte, d.nombre as deporte, e.puntos FROM equipo e
             					INNER JOIN deporte d ON e.idDeporte = d.idDeporte ORDER BY e.idEquipo ASC";

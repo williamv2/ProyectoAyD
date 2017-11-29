@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $iddel = $_POST['middel'];
 $clave = $_POST['mclvdel'];

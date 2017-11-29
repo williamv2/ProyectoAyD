@@ -1,7 +1,7 @@
 <?php 
 
 
-include ("conexion.php");
+include ("conexion1.php");
 
 $cedula = $_POST['mcedula'];
 $nombre = $_POST['mnomarb'];

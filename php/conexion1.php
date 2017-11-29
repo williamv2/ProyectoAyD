@@ -3,10 +3,10 @@
 class conexion{
 
 	private $conexion;
-	private $host_db = "gidis.ufps.edu.co";
-	private $user_db = "jornadaD";
-	private $pass_db = "jornada2017";
-	private $db_master = "jornadasdeportivas";
+	private $host_db = "localhost";
+	private $user_db = "root";
+	private $pass_db = "";
+	private $db_master = "jornadas_deportivas";
 	private $tbl_name = "usuario";
 	private $usuario;
 	private $clave;
